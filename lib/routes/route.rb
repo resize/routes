@@ -7,17 +7,9 @@ module Routes
   # file that was distributed with this source code.
 
   class Route
-    attr_accessor :path, :defaults, :controller, :action
 
-    def initialize(path="", defaults={})
-      @path, @defaults, @controller, @action = path, defaults, defaults[:controller], defaults[:action]
-    
-      raise_args if @path.empty? or @defaults.empty?
-    end
-
-    # Return a raise if dont have @path or @defaults
-    def raise_args
-      raise "You need set a correctly route ex: (path, controller: 'controller', action: 'action')" 
+    def get(*args)
+      Attr.new("GET", *args)
     end
   end
 end
