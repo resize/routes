@@ -7,9 +7,25 @@ module Routes
   # file that was distributed with this source code.
 
   class Route
-
     def get(*args)
-      Attr.new("GET", *args)
+      attrs("GET", *args)
     end
+
+    def post(*args)
+      attrs("POST", *args)
+    end
+
+    def put(*args)
+      attrs("PUT", *args)
+    end
+
+    def delete(*args)
+      attrs("DELETE", *args)
+    end
+
+    private
+      def attrs(verb, *args)
+        Attr.new(verb, *args)
+      end
   end
 end
